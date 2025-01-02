@@ -59,7 +59,7 @@ function processHistoricalData(rawData) {
 		const sortedData = series.data.sort((a, b) => {
 			const dateA = new Date(parseInt(a.year), parseInt(a.period.slice(1)) - 1);
 			const dateB = new Date(parseInt(b.year), parseInt(b.period.slice(1)) - 1);
-			return dateA - dateB;
+			return dateB - dateA;
 		});
 
 		if (sortedData[0]) {
