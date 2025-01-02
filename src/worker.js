@@ -3,6 +3,12 @@ const SERIES_IDS = {
 	milk: 'APU0000709112',
 	bread: 'APU0000702111',
 	gas: 'APU000074714',
+	bacon: 'APU0000704111',
+	bananas: 'APU0000703111',
+	chicken: 'APU0000706111',
+	oranges: 'APU0000711311',
+	coffee: 'APU0000717311',
+	electricity: 'APU000072610',
 };
 
 async function fetchHistoricalData(startYear, endYear, apiKey) {
@@ -102,7 +108,7 @@ export default {
 			console.log('Starting scheduled data fetch...');
 
 			const currentYear = new Date().getFullYear();
-			const startYear = currentYear - 20;
+			const startYear = currentYear - 10;
 
 			console.log(`Fetching data from ${startYear} to ${currentYear}...`);
 
