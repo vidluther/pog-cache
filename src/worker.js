@@ -124,7 +124,7 @@ function processRegionData(rawData, region) {
 		}
 
 		const sortedData = sortSeriesData(series.data);
-		console.log(`Found ${sortedData.length} data points for ${item.name}`);
+		console.log(`Found ${sortedData.length} data points for ${item.name} in ${region}`);
 
 		const categoryId = Object.entries(listOfGoods.categories).find(([_, category]) =>
 			Object.values(category.items).some((catItem) => catItem.dataKey === item.dataKey),
