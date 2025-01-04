@@ -1,33 +1,28 @@
-const SERIES_IDS = {
-	eggs: 'APU0000708111',
-	milk: 'APU0000709112',
-	bread: 'APU0000702111',
-	gas: 'APU000074714',
-	bacon: 'APU0000704111',
-	bananas: 'APU0000703111',
-	chicken: 'APU0000706111',
-	oranges: 'APU0000711311',
-	coffee: 'APU0000717311',
-	electricity: 'APU000072610',
-};
+import listOfGoods from './goods.json';
 
-async function fetchHistoricalData(startYear, endYear, apiKey) {
+const REGIONS = ['national', 'northeast', 'midwest', 'south', 'west'];
+
+// Helper function to extract series IDs from config
+function getSeriesIds(region = 'national') {
+	return Object.values(listOfGoods.categories).flatMap((category) => Object.values(category.items).map((item) => item.seriesId[region]));
+}
+
+async function fetchDataByRegion(region, startYear, endYear, apiKey) {
+	const seriesIds = getSeriesIds(region);
 	const BASE_URL = 'https://api.bls.gov/publicAPI/v2/timeseries/data/';
-
+	console.log('fetching series: ', seriesIds);
 	const requestBody = {
-		seriesid: Object.values(SERIES_IDS),
+		seriesid: seriesIds,
 		startyear: startYear.toString(),
 		endyear: endYear.toString(),
 		registrationKey: apiKey,
-		calculations: false,
+		calculations: true,
 		annualaverage: false,
 	};
 
 	const response = await fetch(BASE_URL, {
 		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
+		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(requestBody),
 	});
 
@@ -36,7 +31,6 @@ async function fetchHistoricalData(startYear, endYear, apiKey) {
 	}
 
 	const data = await response.json();
-
 	if (data.status !== 'REQUEST_SUCCEEDED') {
 		throw new Error(`BLS API error: ${data.message}`);
 	}
@@ -44,84 +38,202 @@ async function fetchHistoricalData(startYear, endYear, apiKey) {
 	return data;
 }
 
-function processHistoricalData(rawData) {
-	const processedData = {
+function findItemBySeriesId(seriesId) {
+	for (const category of Object.values(listOfGoods.categories)) {
+		for (const item of Object.values(category.items)) {
+			const regions = Object.entries(item.seriesId);
+			const found = regions.find(([_, id]) => id === seriesId);
+			if (found) {
+				return {
+					item,
+					region: found[0],
+				};
+			}
+		}
+	}
+	return null;
+}
+
+function sortSeriesData(data) {
+	return data.sort((a, b) => {
+		const dateA = new Date(parseInt(a.year), parseInt(a.period.slice(1)) - 1);
+		const dateB = new Date(parseInt(b.year), parseInt(b.period.slice(1)) - 1);
+		return dateB - dateA;
+	});
+}
+
+function processRegionData(rawData, region) {
+	const result = {
 		current: {},
-		historical: [],
-		metadata: {
-			lastUpdated: new Date().toISOString(),
-			dataRange: {
-				start: null,
-				end: null,
-			},
-		},
+		trends: {},
+		historical: new Map(),
+		categories: {},
 	};
 
-	const monthlyData = {};
-
-	rawData.Results.series.forEach((series) => {
-		const itemName = Object.keys(SERIES_IDS).find((key) => SERIES_IDS[key] === series.seriesID);
-
-		const sortedData = series.data.sort((a, b) => {
-			const dateA = new Date(parseInt(a.year), parseInt(a.period.slice(1)) - 1);
-			const dateB = new Date(parseInt(b.year), parseInt(b.period.slice(1)) - 1);
-			return dateB - dateA;
-		});
-
-		if (sortedData[0]) {
-			processedData.current[itemName] = parseFloat(sortedData[0].value);
-		}
-
-		sortedData.forEach((point) => {
-			const month = `${point.year}-${point.period.slice(1).padStart(2, '0')}`;
-			if (!monthlyData[month]) {
-				monthlyData[month] = {};
-			}
-			monthlyData[month][itemName] = parseFloat(point.value);
-		});
-
-		const dates = sortedData.map((point) => new Date(parseInt(point.year), parseInt(point.period.slice(1)) - 1));
-		const minDate = new Date(Math.min(...dates));
-		const maxDate = new Date(Math.max(...dates));
-
-		if (!processedData.metadata.dataRange.start || minDate < new Date(processedData.metadata.dataRange.start)) {
-			processedData.metadata.dataRange.start = minDate.toISOString();
-		}
-		if (!processedData.metadata.dataRange.end || maxDate > new Date(processedData.metadata.dataRange.end)) {
-			processedData.metadata.dataRange.end = maxDate.toISOString();
-		}
+	// Initialize categories structure
+	Object.entries(listOfGoods.categories).forEach(([categoryId, category]) => {
+		result.categories[categoryId] = {
+			name: category.name,
+			items: {},
+		};
 	});
 
-	processedData.historical = Object.entries(monthlyData)
-		.map(([month, prices]) => ({
-			month,
-			...prices,
-		}))
+	rawData.Results.series.forEach((series) => {
+		const found = findItemBySeriesId(series.seriesID);
+		if (!found) return;
+
+		const { item } = found;
+		const sortedData = sortSeriesData(series.data);
+
+		// Find category for this item
+		const categoryId = Object.entries(listOfGoods.categories).find(([_, category]) =>
+			Object.values(category.items).some((catItem) => catItem.dataKey === item.dataKey),
+		)?.[0];
+
+		if (!categoryId) return;
+
+		// Process current prices
+		if (sortedData[0]) {
+			const currentPrice = parseFloat(sortedData[0].value);
+			result.current[item.dataKey] = currentPrice;
+			result.categories[categoryId].items[item.dataKey] = currentPrice;
+
+			if (sortedData[0].calculations) {
+				result.trends[item.dataKey] = {
+					netChange: sortedData[0].calculations.net_changes,
+					percentChange: sortedData[0].calculations.pct_changes,
+				};
+			}
+		}
+
+		// Process historical data
+		sortedData.forEach((point) => {
+			const month = `${point.year}-${point.period.slice(1).padStart(2, '0')}`;
+			if (!result.historical.has(month)) {
+				result.historical.set(month, {});
+			}
+			result.historical.get(month)[item.dataKey] = parseFloat(point.value);
+		});
+	});
+
+	// Convert historical Map to array
+	result.historical = Array.from(result.historical.entries())
+		.map(([month, prices]) => ({ month, ...prices }))
 		.sort((a, b) => a.month.localeCompare(b.month));
 
-	return processedData;
+	return result;
 }
 
 export default {
 	async scheduled(event, env, ctx) {
+		const currentYear = new Date().getFullYear();
+		const startYear = currentYear - 10;
+		const metadata = {
+			lastUpdated: new Date().toISOString(),
+			dataRange: {
+				start: `${startYear}-01-01T00:00:00.000Z`,
+				end: `${currentYear}-12-31T23:59:59.999Z`,
+			},
+		};
+
 		try {
 			console.log('Starting scheduled data fetch...');
 
-			const currentYear = new Date().getFullYear();
-			const startYear = currentYear - 10;
-
-			console.log(`Fetching data from ${startYear} to ${currentYear}...`);
-
-			const rawData = await fetchHistoricalData(startYear, currentYear, env.BLS_API_KEY);
-			const processedData = processHistoricalData(rawData);
-
-			// Store in R2
-			await env.POGCACHE.put('latest.json', JSON.stringify(processedData), {
+			// Store config for frontend use
+			await env.POGCACHE.put('config.json', JSON.stringify(listOfGoods), {
 				httpMetadata: {
 					contentType: 'application/json',
-					cacheControl: 'public, max-age=3600',
+					cacheControl: 'public, max-age=86400',
 				},
 			});
+
+			// Fetch and process data for each region
+			const regionalData = {};
+			const currentPrices = {};
+
+			for (const region of REGIONS) {
+				console.log(`Fetching data for ${region}...`);
+				const rawData = await fetchDataByRegion(region, startYear, currentYear, env.BLS_API_KEY);
+				const processedData = processRegionData(rawData, region);
+
+				if (region === 'national') {
+					// Store national data separately
+					await env.POGCACHE.put(
+						'national/latest.json',
+						JSON.stringify({
+							...processedData,
+							metadata,
+						}),
+						{
+							httpMetadata: {
+								contentType: 'application/json',
+								cacheControl: 'public, max-age=3600',
+							},
+						},
+					);
+				}
+
+				regionalData[region] = processedData;
+				currentPrices[region] = processedData.current;
+			}
+
+			// Store regional data
+			await env.POGCACHE.put(
+				'regional/latest.json',
+				JSON.stringify({
+					regions: regionalData,
+					metadata,
+				}),
+				{
+					httpMetadata: {
+						contentType: 'application/json',
+						cacheControl: 'public, max-age=3600',
+					},
+				},
+			);
+
+			// Store current prices separately for quick access
+			await env.POGCACHE.put(
+				'current_prices.json',
+				JSON.stringify({
+					prices: currentPrices,
+					metadata,
+				}),
+				{
+					httpMetadata: {
+						contentType: 'application/json',
+						cacheControl: 'public, max-age=3600',
+					},
+				},
+			);
+
+			// Store category-based data
+			const categoryData = {};
+			Object.entries(listOfGoods.categories).forEach(([categoryId, category]) => {
+				categoryData[categoryId] = {
+					name: category.name,
+					current: {},
+					trends: {},
+				};
+
+				REGIONS.forEach((region) => {
+					categoryData[categoryId][region] = regionalData[region].categories[categoryId];
+				});
+			});
+
+			await env.POGCACHE.put(
+				'categories/latest.json',
+				JSON.stringify({
+					categories: categoryData,
+					metadata,
+				}),
+				{
+					httpMetadata: {
+						contentType: 'application/json',
+						cacheControl: 'public, max-age=3600',
+					},
+				},
+			);
 
 			console.log('Successfully updated cache in R2');
 		} catch (error) {
@@ -130,24 +242,22 @@ export default {
 		}
 	},
 
-	// Optional: Add an HTTP handler to manually trigger updates
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
 
 		if (url.pathname === '/update' && request.method === 'POST') {
-			// Check for a secret token to secure the endpoint
 			const authHeader = request.headers.get('Authorization');
-			console.log(authHeader);
 			if (authHeader !== `Bearer ${env.UPDATE_TOKEN}`) {
 				return new Response('Unauthorized', { status: 401 });
 			}
 
-			// Trigger the update
 			try {
 				await this.scheduled(null, env, ctx);
 				return new Response('Cache updated successfully', { status: 200 });
 			} catch (error) {
-				return new Response(`Failed to update cache: ${error.message}`, { status: 500 });
+				return new Response(`Failed to update cache: ${error.message}`, {
+					status: 500,
+				});
 			}
 		}
 
