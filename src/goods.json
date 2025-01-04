@@ -1,0 +1,264 @@
+{
+  "categories": {
+    "meats": {
+      "name": "Meats",
+      "items": {
+        "chicken": {
+          "name": "Chicken",
+          "dataKey": "chicken",
+          "icon": "🐔",
+          "unit": "pound",
+          "bgColor": "bg-orange-50",
+          "lineColor": "#ea580c",
+          "seriesId": {
+            "national": "APU0000706111",
+            "northeast": "APR0100706111",
+            "midwest": "APR0200706111",
+            "south": "APR0300706111",
+            "west": "APR0400706111"
+          }
+        },
+        "fish": {
+          "name": "Fish",
+          "dataKey": "fish",
+          "icon": "🐟",
+          "unit": "pound",
+          "bgColor": "bg-blue-50",
+          "lineColor": "#3b82f6",
+          "seriesId": {
+            "national": "APU0000706211",
+            "northeast": "APR0100706211",
+            "midwest": "APR0200706211",
+            "south": "APR0300706211",
+            "west": "APR0400706211"
+          }
+        },
+        "ground_beef": {
+          "name": "Ground Beef",
+          "dataKey": "ground_beef",
+          "icon": "🥩",
+          "unit": "pound",
+          "bgColor": "bg-red-50",
+          "lineColor": "#ef4444",
+          "seriesId": {
+            "national": "APU0000703112",
+            "northeast": "APR0100703112",
+            "midwest": "APR0200703112",
+            "south": "APR0300703112",
+            "west": "APR0400703112"
+          }
+        },
+        "bacon": {
+          "name": "Bacon",
+          "dataKey": "bacon",
+          "icon": "🥓",
+          "unit": "pound",
+          "bgColor": "bg-rose-50",
+          "lineColor": "#e11d48",
+          "seriesId": {
+            "national": "APU0000704111",
+            "northeast": "APR0100704111",
+            "midwest": "APR0200704111",
+            "south": "APR0300704111",
+            "west": "APR0400704111"
+          }
+        }
+      }
+    },
+    "dairy": {
+      "name": "Dairy",
+      "items": {
+        "milk": {
+          "name": "Whole Milk",
+          "dataKey": "milk",
+          "icon": "🥛",
+          "unit": "gallon",
+          "bgColor": "bg-blue-50",
+          "lineColor": "#82ca9d",
+          "seriesId": {
+            "national": "APU0000709112",
+            "northeast": "APR0100709112",
+            "midwest": "APR0200709112",
+            "south": "APR0300709112",
+            "west": "APR0400709112"
+          }
+        },
+        "cheese": {
+          "name": "Cheese",
+          "dataKey": "cheese",
+          "icon": "🧀",
+          "unit": "pound",
+          "bgColor": "bg-yellow-50",
+          "lineColor": "#fbbf24",
+          "seriesId": {
+            "national": "APU0000710212",
+            "northeast": "APR0100710212",
+            "midwest": "APR0200710212",
+            "south": "APR0300710212",
+            "west": "APR0400710212"
+          }
+        },
+        "ice_cream": {
+          "name": "Ice Cream",
+          "dataKey": "ice_cream",
+          "icon": "🍨",
+          "unit": "half gallon",
+          "bgColor": "bg-pink-50",
+          "lineColor": "#ec4899",
+          "seriesId": {
+            "national": "APU0000710411",
+            "northeast": "APR0100710411",
+            "midwest": "APR0200710411",
+            "south": "APR0300710411",
+            "west": "APR0400710411"
+          }
+        }
+      }
+    },
+    "produce": {
+      "name": "Fruits and Vegetables",
+      "items": {
+        "bananas": {
+          "name": "Bananas",
+          "dataKey": "bananas",
+          "icon": "🍌",
+          "unit": "pound",
+          "bgColor": "bg-yellow-50",
+          "lineColor": "#eab308",
+          "seriesId": {
+            "national": "APU0000711211",
+            "northeast": "APR0100711211",
+            "midwest": "APR0200711211",
+            "south": "APR0300711211",
+            "west": "APR0400711211"
+          }
+        },
+        "apples": {
+          "name": "Apples",
+          "dataKey": "apples",
+          "icon": "🍎",
+          "unit": "pound",
+          "bgColor": "bg-red-50",
+          "lineColor": "#dc2626",
+          "seriesId": {
+            "national": "APU0000711311",
+            "northeast": "APR0100711311",
+            "midwest": "APR0200711311",
+            "south": "APR0300711311",
+            "west": "APR0400711311"
+          }
+        },
+        "citrus": {
+          "name": "Oranges",
+          "dataKey": "oranges",
+          "icon": "🍊",
+          "unit": "pound",
+          "bgColor": "bg-orange-50",
+          "lineColor": "#f97316",
+          "seriesId": {
+            "national": "APU0000711411",
+            "northeast": "APR0100711411",
+            "midwest": "APR0200711411",
+            "south": "APR0300711411",
+            "west": "APR0400711411"
+          }
+        },
+        "potatoes": {
+          "name": "Potatoes",
+          "dataKey": "potatoes",
+          "icon": "🥔",
+          "unit": "pound",
+          "bgColor": "bg-amber-50",
+          "lineColor": "#d97706",
+          "seriesId": {
+            "national": "APU0000711611",
+            "northeast": "APR0100711611",
+            "midwest": "APR0200711611",
+            "south": "APR0300711611",
+            "west": "APR0400711611"
+          }
+        },
+        "lettuce": {
+          "name": "Lettuce",
+          "dataKey": "lettuce",
+          "icon": "🥬",
+          "unit": "pound",
+          "bgColor": "bg-green-50",
+          "lineColor": "#16a34a",
+          "seriesId": {
+            "national": "APU0000712211",
+            "northeast": "APR0100712211",
+            "midwest": "APR0200712211",
+            "south": "APR0300712211",
+            "west": "APR0400712211"
+          }
+        },
+        "tomatoes": {
+          "name": "Tomatoes",
+          "dataKey": "tomatoes",
+          "icon": "🍅",
+          "unit": "pound",
+          "bgColor": "bg-red-50",
+          "lineColor": "#b91c1c",
+          "seriesId": {
+            "national": "APU0000712311",
+            "northeast": "APR0100712311",
+            "midwest": "APR0200712311",
+            "south": "APR0300712311",
+            "west": "APR0400712311"
+          }
+        }
+      }
+    },
+    "energy": {
+      "name": "Energy",
+      "items": {
+        "gas": {
+          "name": "Unleaded Regular Gas",
+          "dataKey": "gas",
+          "icon": "⛽",
+          "unit": "gallon",
+          "bgColor": "bg-red-50",
+          "lineColor": "#dc2626",
+          "seriesId": {
+            "national": "APU000074714",
+            "northeast": "APR0100074714",
+            "midwest": "APR0200074714",
+            "south": "APR0300074714",
+            "west": "APR0400074714"
+          }
+        },
+        "electricity": {
+          "name": "Electricity",
+          "dataKey": "electricity",
+          "icon": "💡",
+          "unit": "KWH",
+          "bgColor": "bg-yellow-50",
+          "lineColor": "#facc15",
+          "seriesId": {
+            "national": "APU000072610",
+            "northeast": "APR0100072610",
+            "midwest": "APR0200072610",
+            "south": "APR0300072610",
+            "west": "APR0400072610"
+          }
+        },
+        "propane": {
+          "name": "Propane",
+          "dataKey": "propane",
+          "icon": "🔥",
+          "unit": "gallon",
+          "bgColor": "bg-blue-50",
+          "lineColor": "#3b82f6",
+          "seriesId": {
+            "national": "APU000072512",
+            "northeast": "APR0100072512",
+            "midwest": "APR0200072512",
+            "south": "APR0300072512",
+            "west": "APR0400072512"
+          }
+        }
+      }
+    }
+  }
+}
