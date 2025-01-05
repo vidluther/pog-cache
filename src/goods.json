@@ -171,11 +171,11 @@
 					"bgColor": "bg-amber-50",
 					"lineColor": "#d97706",
 					"seriesId": {
-						"national": "APU0000711611",
-						"northeast": "APU0100711611",
-						"midwest": "APU0200711611",
-						"south": "APU0300711611",
-						"west": "APU0400711611"
+						"national": "APU0000712112",
+						"northeast": "APU0100712112",
+						"midwest": "APU0200712112",
+						"south": "APU0300712112",
+						"west": "APU0400712112"
 					}
 				},
 				"lettuce": {
