@@ -116,14 +116,17 @@ export default {
 						// Store the data in R2
 						const filepath = `${region}/${itemKey}.json`;
 						await sendToR2(env.POGCACHE_R2_BUCKET, filepath, itemData);
-					}
+					} // end series loop
 
 					console.log(`✓ Completed processing ${region} region`);
 				} catch (error) {
 					console.error(`❌ Error processing ${region} region:`, error);
 				}
-			}
+			} // end region loop
 
+			console.log('Upload the goods.json file to R2 as well');
+			const goodsFilepath = `goods.json`;
+			await sendToR2(env.POGCACHE_R2_BUCKET, goodsFilepath, listOfGoods);
 			console.log('\n✅ Cache update completed successfully');
 		} catch (error) {
 			console.error('\n❌ Failed to update cache:', error);
