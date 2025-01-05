@@ -150,7 +150,7 @@
 				},
 				"citrus": {
 					"name": "Oranges",
-					"dataKey": "citrus",
+					"dataKey": "oranges",
 					"icon": "🍊",
 					"unit": "pound",
 					"bgColor": "bg-orange-50",
