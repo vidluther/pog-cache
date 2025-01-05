@@ -118,7 +118,7 @@ export default {
 						await sendToR2(env.POGCACHE_R2_BUCKET, filepath, itemData);
 					} // end series loop
 
-					console.log(`✓ Completed processing ${region} region`);
+					console.log(`✓ Completed processing `, region);
 				} catch (error) {
 					console.error(`❌ Error processing ${region} region:`, error);
 				}
