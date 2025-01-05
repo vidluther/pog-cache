@@ -3,6 +3,21 @@
 		"meats": {
 			"name": "Meats",
 			"items": {
+				"eggs": {
+					"name": "Eggs",
+					"dataKey": "eggs",
+					"icon": "🥚",
+					"unit": "dozen",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#ea580c",
+					"seriesId": {
+						"national": "APU0000708111",
+						"northeast": "APU0100708111",
+						"midwest": "APU0200708111",
+						"south": "APU0300708111",
+						"west": "APU0400708112"
+					}
+				},
 				"chicken": {
 					"name": "Chicken",
 					"dataKey": "chicken",
