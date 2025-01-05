@@ -21,6 +21,5 @@ enabled = true
 crons = ["0 0 * * *"] # Run daily at midnight UTC
 
 [[r2_buckets]]
-binding = "POGCACHE"
+binding = "POGCACHE_R2_BUCKET"
 bucket_name = "pogcache"
-
