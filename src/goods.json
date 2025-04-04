@@ -1,35 +1,12 @@
 {
 	"categories": {
 		"household": {
-			"name": "Household",
+			"name": "Household Goods",
 			"items": {
-				"vehicles": {
-					"name": "New Vehicles",
-					"dataKey": "vehicles",
-					"icon": "🚘",
-					"unit": "vehicle",
-					"bgColor": "bg-blue-50",
-					"lineColor": "#3b82f6",
-					"seriesId": {
-						"national": "CUSR0000SETA01"
-					}
-				},
-				"carparts": {
-					"name": "Car Parts",
-					"dataKey": "carparts",
-					"icon": "🔧",
-					"unit": "part",
-					"bgColor": "bg-orange-50",
-					"lineColor": "#ea580c",
-					"seriesId": {
-						"national": "CUSR0000SETC"
-					}
-				},
 				"internet_service": {
 					"name": "Internet Service",
 					"dataKey": "internet_service",
 					"icon": "🌐",
-					"unit": "monthly",
 					"bgColor": "bg-red-50",
 					"lineColor": "#ef4444",
 					"seriesId": {
@@ -40,7 +17,6 @@
 					"name": "Streaming Services",
 					"dataKey": "streaming",
 					"icon": "📺",
-					"unit": "subscription",
 					"bgColor": "bg-rose-50",
 					"lineColor": "#e11d48",
 					"seriesId": {
@@ -51,11 +27,57 @@
 					"name": "Wireless Service",
 					"dataKey": "wireless_service",
 					"icon": "📱",
-					"unit": "monthly",
 					"bgColor": "bg-green-50",
 					"lineColor": "#22c55e",
 					"seriesId": {
 						"national": "CUUR0000SEED03"
+					}
+				},
+				"housing": {
+					"name": "Housing",
+					"dataKey": "housing",
+					"icon": "🏠",
+					"bgColor": "bg-blue-50",
+					"lineColor": "#3b82f6",
+					"seriesId": {
+						"national": "CUSR0000SAH"
+					}
+				},
+				"household_energy": {
+					"name": "Household Energy",
+					"dataKey": "household_energy",
+					"icon": "🏠",
+					"bgColor": "bg-blue-50",
+					"lineColor": "#3b82f6",
+					"seriesId": {
+						"national": "CUSR0000SAH21"
+					}
+				}
+			}
+		},
+		"vehicles": {
+			"name": "Vehicles",
+			"items": {
+				"new": {
+					"name": "New Cars and Trucks",
+					"dataKey": "new_cars",
+					"icon": "🚗",
+					"unit": "unit",
+					"bgColor": "bg-blue-50",
+					"lineColor": "#3b82f6",
+					"seriesId": {
+						"national": "CUSR0000SS4501A"
+					},
+					"used": {
+						"name": "Used Cars and Trucks",
+						"dataKey": "used_cars",
+						"icon": "🚚",
+						"unit": "unit",
+						"bgColor": "bg-blue-50",
+						"lineColor": "#3b82f6",
+						"seriesId": {
+							"national": "CUSR0000SETA02"
+						}
 					}
 				}
 			}
