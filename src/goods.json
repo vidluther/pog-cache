@@ -4,6 +4,7 @@
 			"name": "Household Goods",
 			"items": {
 				"internet_service": {
+					"cpi": "true",
 					"name": "Internet Service",
 					"dataKey": "internet_service",
 					"icon": "🌐",
@@ -14,6 +15,7 @@
 					}
 				},
 				"streaming": {
+					"cpi": "true",
 					"name": "Streaming Services",
 					"dataKey": "streaming",
 					"icon": "📺",
@@ -24,6 +26,7 @@
 					}
 				},
 				"wireless_service": {
+					"cpi": "true",
 					"name": "Wireless Service",
 					"dataKey": "wireless_service",
 					"icon": "📱",
@@ -34,20 +37,22 @@
 					}
 				},
 				"housing": {
+					"cpi": "true",
 					"name": "Housing",
 					"dataKey": "housing",
 					"icon": "🏠",
-					"bgColor": "bg-blue-50",
+					"bgColor": "bg-green-50",
 					"lineColor": "#3b82f6",
 					"seriesId": {
 						"national": "CUSR0000SAH"
 					}
 				},
 				"household_energy": {
+					"cpi": "true",
 					"name": "Household Energy",
 					"dataKey": "household_energy",
 					"icon": "🏠",
-					"bgColor": "bg-blue-50",
+					"bgColor": "bg-green-50",
 					"lineColor": "#3b82f6",
 					"seriesId": {
 						"national": "CUSR0000SAH21"
@@ -59,23 +64,25 @@
 			"name": "Vehicles",
 			"items": {
 				"new_cars_and_trucks": {
+					"cpi": "true",
 					"name": "New Cars and Trucks",
 					"dataKey": "new_cars_and_trucks",
 					"icon": "🚗",
-					"bgColor": "bg-blue-50",
+					"bgColor": "bg-green-50",
 					"lineColor": "#3b82f6",
 					"seriesId": {
 						"national": "CUSR0000SS4501A"
-					},
-					"used_cars_and_trucks": {
-						"name": "Used Cars and Trucks",
-						"dataKey": "used_cars_and_trucks",
-						"icon": "🚚",
-						"bgColor": "bg-blue-50",
-						"lineColor": "#3b82f6",
-						"seriesId": {
-							"national": "CUSR0000SETA02"
-						}
+					}
+				},
+				"used_cars_and_trucks": {
+					"cpi": "true",
+					"name": "Used Cars and Trucks",
+					"dataKey": "used_cars_and_trucks",
+					"icon": "🚚",
+					"bgColor": "bg-green-50",
+					"lineColor": "#3b82f6",
+					"seriesId": {
+						"national": "CUSR0000SETA02"
 					}
 				}
 			}
