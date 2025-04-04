@@ -58,21 +58,19 @@
 		"vehicles": {
 			"name": "Vehicles",
 			"items": {
-				"new": {
+				"new_cars_and_trucks": {
 					"name": "New Cars and Trucks",
-					"dataKey": "new_cars",
+					"dataKey": "new_cars_and_trucks",
 					"icon": "🚗",
-					"unit": "unit",
 					"bgColor": "bg-blue-50",
 					"lineColor": "#3b82f6",
 					"seriesId": {
 						"national": "CUSR0000SS4501A"
 					},
-					"used": {
+					"used_cars_and_trucks": {
 						"name": "Used Cars and Trucks",
-						"dataKey": "used_cars",
+						"dataKey": "used_cars_and_trucks",
 						"icon": "🚚",
-						"unit": "unit",
 						"bgColor": "bg-blue-50",
 						"lineColor": "#3b82f6",
 						"seriesId": {
