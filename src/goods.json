@@ -1,5 +1,65 @@
 {
 	"categories": {
+		"household": {
+			"name": "Household",
+			"items": {
+				"vehicles": {
+					"name": "New Vehicles",
+					"dataKey": "vehicles",
+					"icon": "🚘",
+					"unit": "vehicle",
+					"bgColor": "bg-blue-50",
+					"lineColor": "#3b82f6",
+					"seriesId": {
+						"national": "CUSR0000SETA01"
+					}
+				},
+				"carparts": {
+					"name": "Car Parts",
+					"dataKey": "carparts",
+					"icon": "🔧",
+					"unit": "part",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#ea580c",
+					"seriesId": {
+						"national": "CUSR0000SETC"
+					}
+				},
+				"internet_service": {
+					"name": "Internet Service",
+					"dataKey": "internet_service",
+					"icon": "🌐",
+					"unit": "monthly",
+					"bgColor": "bg-red-50",
+					"lineColor": "#ef4444",
+					"seriesId": {
+						"national": "CUSR0000SEEE03"
+					}
+				},
+				"streaming": {
+					"name": "Streaming Services",
+					"dataKey": "streaming",
+					"icon": "📺",
+					"unit": "subscription",
+					"bgColor": "bg-rose-50",
+					"lineColor": "#e11d48",
+					"seriesId": {
+						"national": "CUSR0000SERA02"
+					}
+				},
+				"wireless_service": {
+					"name": "Wireless Service",
+					"dataKey": "wireless_service",
+					"icon": "📱",
+					"unit": "monthly",
+					"bgColor": "bg-green-50",
+					"lineColor": "#22c55e",
+					"seriesId": {
+						"national": "CUUR0000SEED03"
+					}
+				}
+			}
+		},
 		"meats": {
 			"name": "Meats",
 			"items": {
