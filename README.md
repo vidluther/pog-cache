@@ -38,7 +38,7 @@ POG-Cache automatically pulls price information for various consumer goods acros
 
 - Start local development server:
   ```
-  yarn dev
+  npm run dev
   ```
 - Run tests:
   ```
@@ -46,7 +46,7 @@ POG-Cache automatically pulls price information for various consumer goods acros
   ```
 - Deploy to Cloudflare:
   ```
-  yarn deploy
+  npm deploy
   ```
 
 ## Data Structure
