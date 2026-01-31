@@ -171,3 +171,9 @@ dist
 
 .dev.vars
 .wrangler/
+
+# AI Agent folders
+.claude/
+.anthropic/
+# Keep the plans, but maybe ignore the draft/temp ones
+docs/plans/*.tmp.md

@@ -1,23 +1,8 @@
 {
 	"categories": {
-		"meats": {
-			"name": "Meats",
+		"proteins": {
+			"name": "Proteins",
 			"items": {
-				"eggs": {
-					"name": "Eggs",
-					"dataKey": "eggs",
-					"icon": "🥚",
-					"unit": "dozen",
-					"bgColor": "bg-orange-50",
-					"lineColor": "#ea580c",
-					"seriesId": {
-						"national": "APU0000708111",
-						"northeast": "APU0100708111",
-						"midwest": "APU0200708111",
-						"south": "APU0300708111",
-						"west": "APU0400708112"
-					}
-				},
 				"chicken": {
 					"name": "Chicken",
 					"dataKey": "chicken",
@@ -62,12 +47,57 @@
 						"south": "APU0300704111",
 						"west": "APU0400704111"
 					}
+				},
+				"pork_chops": {
+					"name": "Pork Chops",
+					"dataKey": "pork_chops",
+					"icon": "🍖",
+					"unit": "pound",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#c2410c",
+					"seriesId": {
+						"national": "APU0000FD3101",
+						"northeast": "APU0100FD3101",
+						"midwest": "APU0200FD3101",
+						"south": "APU0300FD3101",
+						"west": "APU0400FD3101"
+					}
+				},
+				"ham": {
+					"name": "Ham",
+					"dataKey": "ham",
+					"icon": "🐷",
+					"unit": "pound",
+					"bgColor": "bg-rose-50",
+					"lineColor": "#be123c",
+					"seriesId": {
+						"national": "APU0000FD2101",
+						"northeast": "APU0100FD2101",
+						"midwest": "APU0200FD2101",
+						"south": "APU0300FD2101",
+						"west": "APU0400FD2101"
+					}
 				}
 			}
 		},
-		"dairy": {
-			"name": "Dairy",
+		"dairy_eggs": {
+			"name": "Dairy & Eggs",
 			"items": {
+				"eggs": {
+					"name": "Eggs",
+					"dataKey": "eggs",
+					"icon": "🥚",
+					"unit": "dozen",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#ea580c",
+					"seriesId": {
+						"national": "APU0000708111",
+						"northeast": "APU0100708111",
+						"midwest": "APU0200708111",
+						"south": "APU0300708111",
+						"west": "APU0400708112"
+					}
+				},
 				"milk": {
 					"name": "Whole Milk",
 					"dataKey": "milk",
@@ -112,11 +142,41 @@
 						"south": "APU0300710411",
 						"west": "APU0400710411"
 					}
+				},
+				"butter": {
+					"name": "Butter",
+					"dataKey": "butter",
+					"icon": "🧈",
+					"unit": "pound",
+					"bgColor": "bg-yellow-50",
+					"lineColor": "#ca8a04",
+					"seriesId": {
+						"national": "APU0000FS1101",
+						"northeast": "APU0100FS1101",
+						"midwest": "APU0200FS1101",
+						"south": "APU0300FS1101",
+						"west": "APU0400FS1101"
+					}
+				},
+				"yogurt": {
+					"name": "Yogurt",
+					"dataKey": "yogurt",
+					"icon": "🫙",
+					"unit": "8 oz",
+					"bgColor": "bg-violet-50",
+					"lineColor": "#7c3aed",
+					"seriesId": {
+						"national": "APU0000FJ4101",
+						"northeast": "APU0100FJ4101",
+						"midwest": "APU0200FJ4101",
+						"south": "APU0300FJ4101",
+						"west": "APU0400FJ4101"
+					}
 				}
 			}
 		},
-		"produce": {
-			"name": "Fruits and Vegetables",
+		"fruits": {
+			"name": "Fruits",
 			"items": {
 				"bananas": {
 					"name": "Bananas",
@@ -163,6 +223,26 @@
 						"west": "APU0400711411"
 					}
 				},
+				"strawberries": {
+					"name": "Strawberries",
+					"dataKey": "strawberries",
+					"icon": "🍓",
+					"unit": "12 oz",
+					"bgColor": "bg-red-50",
+					"lineColor": "#dc2626",
+					"seriesId": {
+						"national": "APU0000711415",
+						"northeast": "APU0100711415",
+						"midwest": "APU0200711415",
+						"south": "APU0300711415",
+						"west": "APU0400711415"
+					}
+				}
+			}
+		},
+		"vegetables": {
+			"name": "Vegetables",
+			"items": {
 				"potatoes": {
 					"name": "Potatoes",
 					"dataKey": "potatoes",
@@ -210,6 +290,101 @@
 				}
 			}
 		},
+		"pantry": {
+			"name": "Pantry",
+			"items": {
+				"white_bread": {
+					"name": "White Bread",
+					"dataKey": "white_bread",
+					"icon": "🍞",
+					"unit": "pound",
+					"bgColor": "bg-amber-50",
+					"lineColor": "#d97706",
+					"seriesId": {
+						"national": "APU0000702111",
+						"northeast": "APU0100702111",
+						"midwest": "APU0200702111",
+						"south": "APU0300702111",
+						"west": "APU0400702111"
+					}
+				},
+				"whole_wheat_bread": {
+					"name": "Whole Wheat Bread",
+					"dataKey": "whole_wheat_bread",
+					"icon": "🌾",
+					"unit": "pound",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#c2410c",
+					"seriesId": {
+						"national": "APU0000702212",
+						"northeast": "APU0100702212",
+						"midwest": "APU0200702212",
+						"south": "APU0300702212",
+						"west": "APU0400702212"
+					}
+				},
+				"rice": {
+					"name": "Rice",
+					"dataKey": "rice",
+					"icon": "🍚",
+					"unit": "pound",
+					"bgColor": "bg-stone-50",
+					"lineColor": "#78716c",
+					"seriesId": {
+						"national": "APU0000701312",
+						"northeast": "APU0100701312",
+						"midwest": "APU0200701312",
+						"south": "APU0300701312",
+						"west": "APU0400701312"
+					}
+				},
+				"spaghetti": {
+					"name": "Spaghetti & Macaroni",
+					"dataKey": "spaghetti",
+					"icon": "🍝",
+					"unit": "pound",
+					"bgColor": "bg-yellow-50",
+					"lineColor": "#ca8a04",
+					"seriesId": {
+						"national": "APU0000701322",
+						"northeast": "APU0100701322",
+						"midwest": "APU0200701322",
+						"south": "APU0300701322",
+						"west": "APU0400701322"
+					}
+				},
+				"flour": {
+					"name": "Flour",
+					"dataKey": "flour",
+					"icon": "🌿",
+					"unit": "pound",
+					"bgColor": "bg-neutral-50",
+					"lineColor": "#737373",
+					"seriesId": {
+						"national": "APU0000701111",
+						"northeast": "APU0100701111",
+						"midwest": "APU0200701111",
+						"south": "APU0300701111",
+						"west": "APU0400701111"
+					}
+				},
+				"coffee": {
+					"name": "Coffee",
+					"dataKey": "coffee",
+					"icon": "☕",
+					"unit": "pound",
+					"bgColor": "bg-stone-50",
+					"lineColor": "#57534e",
+					"seriesId": {
+						"national": "APU0000717311",
+						"northeast": "APU0100717311",
+						"midwest": "APU0200717311",
+						"south": "APU0300717311",
+						"west": "APU0400717311"
+					}
+				}
+			}
+		},
 		"energy": {
 			"name": "Energy",
 			"items": {
@@ -241,6 +416,21 @@
 						"midwest": "APU020072610",
 						"south": "APU030072610",
 						"west": "APU040072610"
+					}
+				},
+				"natural_gas": {
+					"name": "Natural Gas",
+					"dataKey": "natural_gas",
+					"icon": "🔥",
+					"unit": "therm",
+					"bgColor": "bg-orange-50",
+					"lineColor": "#ea580c",
+					"seriesId": {
+						"national": "APU000072620",
+						"northeast": "APU010072620",
+						"midwest": "APU020072620",
+						"south": "APU030072620",
+						"west": "APU040072620"
 					}
 				}
 			}
